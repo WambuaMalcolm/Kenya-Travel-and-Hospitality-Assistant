@@ -29,7 +29,6 @@ pip install -r requirements.txt
 ### Create a `.env` file in the root directory and add your Pinecone & groq credentials as follows:
 
 ```ini
-ZILLIZ_API_KEY = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 OPENAI_API_KEY = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 ```
 
@@ -51,5 +50,4 @@ open up localhost:
 - FastAPI
 - Groq
 - Pinecone
-
-- used intfloat/multilingual-e5-base model
+- used intfloat/multilingual-e5-base embedding model
