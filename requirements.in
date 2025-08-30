@@ -1,0 +1,30 @@
+# Core LLM + Chains
+langchain
+langchain-huggingface
+langchain-community
+pypdf
+
+# OpenAI LLMs
+langchain-openai
+openai
+
+# Hugging Face embeddings
+sentence-transformers
+huggingface_hub[hf_xet]
+
+# Zilliz / Milvus vector DB
+pymilvus
+
+# Token counting (optional but useful with OpenAI)
+tiktoken
+
+# Environment variable management
+python-dotenv
+
+# Deploy
+fastapi
+uvicorn
+jinja2
+
+# Vector Database
+faiss-cpu
