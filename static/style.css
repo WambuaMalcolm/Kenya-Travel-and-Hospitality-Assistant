@@ -1,0 +1,254 @@
+/*--------------------
+Global
+--------------------*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  font-family: "Open Sans", sans-serif;
+  font-size: 12px;
+  line-height: 1.3;
+  overflow: hidden;
+}
+
+body {
+  background: linear-gradient(135deg, #044f48, #2a7561);
+}
+
+/* Background Blur */
+.bg {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  background: url("https://images.unsplash.com/photo-1451186859696-371d9477be93?crop=entropy&fit=crop&fm=jpg&h=975&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=1925") no-repeat center center/cover;
+  filter: blur(80px);
+  transform: scale(1.2);
+}
+
+/*--------------------
+Chat Container
+--------------------*/
+.chat {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 80vh;
+  max-height: 500px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px;
+  background: rgba(0, 0, 0, 0.5);
+  box-shadow: 0 5px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Chat Header */
+.chat-title {
+  flex: 0 0 45px;
+  position: relative;
+  background: rgba(0, 0, 0, 0.2);
+  color: #fff;
+  padding: 10px 10px 10px 50px;
+  text-transform: uppercase;
+}
+
+.chat-title h1,
+.chat-title h2 {
+  margin: 0;
+  font-weight: normal;
+  font-size: 10px;
+}
+
+.chat-title h2 {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 8px;
+  letter-spacing: 1px;
+}
+
+.chat-title .avatar {
+  position: absolute;
+  top: 8px;
+  left: 9px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.24);
+}
+
+.chat-title .avatar img {
+  width: 100%;
+  height: auto;
+}
+
+/* Messages Area */
+.messages {
+  flex: 1 1 auto;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.messages .messages-content {
+  position: relative;
+  width: 100%;
+  height: auto;
+  padding: 10px;
+}
+
+/* Messages */
+.messages .message {
+  clear: both;
+  float: left;
+  padding: 6px 10px;
+  margin: 8px 0;
+  border-radius: 10px 10px 10px 0;
+  background: rgba(0, 0, 0, 0.3);
+  font-size: 11px;
+  line-height: 1.4;
+  margin-left: 35px;
+  position: relative;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  transform: scale(0);
+  animation: bounce 0.3s forwards;
+}
+
+.messages .message.message-personal {
+  float: right;
+  text-align: right;
+  color: #fff;
+  background: linear-gradient(120deg, #248a52, #257287);
+  border-radius: 10px 10px 0 10px;
+}
+
+.messages .message .avatar {
+  position: absolute;
+  bottom: -15px;
+  left: -35px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.24);
+}
+
+.messages .message .avatar img {
+  width: 100%;
+  height: auto;
+}
+
+.messages .message:last-child {
+  margin-bottom: 30px;
+}
+
+/* Loading animation */
+.messages .message.loading {
+  background: transparent;
+  padding: 0;
+  width: 50px;
+  height: 20px;
+  text-align: center;
+  float: left;
+  margin-left: 35px;
+}
+
+.messages .message.loading span {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin: 0 2px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  animation: ball 0.6s infinite alternate;
+}
+
+.messages .message.loading span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.messages .message.loading span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+/* Input Box */
+.message-box {
+  flex: 0 0 40px;
+  display: flex;
+  align-items: center;
+  padding: 5px 10px;
+  background: rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+.message-box .message-input {
+  flex: 1;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 11px;
+  height: 25px;
+  outline: none;
+  resize: none;
+  padding: 5px;
+}
+
+.message-box .message-submit {
+  background: #248a52;
+  border: none;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 10px;
+  font-size: 10px;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+.message-box .message-submit:hover {
+  background: #1d7745;
+}
+
+/* Scrollbar */
+.mCSB_scrollTools {
+  opacity: 0;
+}
+
+.mCSB_inside > .mCSB_container {
+  padding: 0 10px;
+}
+
+.mCSB_dragger_bar {
+  background-color: rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Animations */
+@keyframes bounce {
+  0% {
+    transform: scale(0);
+  }
+  60% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes ball {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-6px);
+  }
+}
