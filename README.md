@@ -1,16 +1,17 @@
-# Kenya-Travel-and-Hospitality-Assistant
+# 🌍 Kenya Travel & Hospitality Assistant
+
+An AI-powered chatbot designed to assist users with travel and hospitality information in Kenya.  
+Built with **LangChain**, **FastAPI**, **Groq**, and **Pinecone** for intelligent search and retrieval.
 
 # How to run?
 
-### STEPS:
-
-Clone the repository
+### 1. Clone the repository
 
 ```bash
 Project repo: https://github.com/WambuaMalcolm/Medical-Chatbot-Generative-AI.git
 ```
 
-### STEP 01- Create a conda environment after opening the repository
+### 2. Create a conda environment after opening the repository
 
 ```bash
 conda create -n travelbot python=3.10 -y
@@ -20,27 +21,29 @@ conda create -n travelbot python=3.10 -y
 conda activate travelbot
 ```
 
-### STEP 02- install the requirements
+### 3. install the requirements
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### Create a `.env` file in the root directory and add your Pinecone & groq credentials as follows:
+### 4. Configure Environment Variables
+
+Create a `.env` file in the root directory and add your Pinecone & groq credentials as follows:
 
 ```ini
 OPENAI_API_KEY = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 ```
 
+### 5. Run the App
 ```bash
-# run the following command
 uvicorn app:app --reload
 ```
 
-Now,
+Then open your browser and go to:
 
 ```bash
-open up localhost:
+http://127.0.0.1:8000
 ```
 
 ### Techstack Used:
