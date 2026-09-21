@@ -19,7 +19,7 @@ def load_data(data_dir):
     return loader.load()
 
 def split_data(documents, chunk_size=500, chunk_overlap=20):
-    """Split documents into smaller chunks."""
+    """Split documents into smaller chunks. Requires documents"""
     splitter = RecursiveCharacterTextSplitter(
         chunk_size=chunk_size,
         chunk_overlap=chunk_overlap
@@ -31,7 +31,7 @@ def load_embeddings(model="intfloat/multilingual-e5-base"):
     return HuggingFaceEmbeddings(model_name=model)
 
 def build_index(embeddings, text_chunks, faiss_path="faiss_index"):
-    """Build FAISS index from chunks and save locally."""
+    """Build FAISS index from chunks and save locally. Requires embeddings and  text_chunks"""
     print("✨ Creating new FAISS index...")
     docs = [Document(page_content=f"passage: {chunk.page_content}") for chunk in text_chunks]
     vectorstore = FAISS.from_documents(docs, embeddings)
